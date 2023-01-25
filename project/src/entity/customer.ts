@@ -1,16 +1,32 @@
-class Customer {
+import { Address } from "../valueObject/address";
+
+export class Customer {
     _id: string;
     _name: string;
-    _address: string;
+    _address!: Address;
 
     constructor(
         id: string,
         name: string,
-        address: string
     ) {
         this._id = id;
         this._name = name;
-        this._address = address;
+
+        this.validate();
+    }
+
+    validate() {
+        if (this._id.length === 0) {
+            throw new Error("ID is required");
+        }
+
+        if (this._name === "") {
+            throw new Error("Name is required");
+        }
+
+        if (this._address === undefined) {
+            throw new Error("Address is required");
+        }
     }
 
     // anemic entity
@@ -21,5 +37,9 @@ class Customer {
     // expressivity/business rules
     changeName(name: string) {
         this._name = name;
+    }
+
+    set Address(address: Address) {
+        this._address = address;
     }
 }
