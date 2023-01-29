@@ -35,3 +35,7 @@ Entidade =
 - CPF
   - number
   - mask
+
+## Aggregate
+
+"Um agregado é um conjunto de objetos associados que tratamos como uma unidade para propósito de mudança de dados."
